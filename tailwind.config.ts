@@ -60,11 +60,11 @@ export default {
           border: "hsl(var(--sidebar-border))",
           ring: "hsl(var(--sidebar-ring))",
         },
-        sky: {
-          soft: "hsl(var(--sky-soft))",
+        warm: {
+          soft: "hsl(var(--warm-soft))",
         },
-        mint: {
-          soft: "hsl(var(--mint-soft))",
+        yellow: {
+          soft: "hsl(var(--yellow-soft))",
         },
         coral: "hsl(var(--coral))",
         lavender: "hsl(var(--lavender))",

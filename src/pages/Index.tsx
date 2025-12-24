@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Shield, Heart, Users, Stethoscope, Star, Clock, ArrowRight, CheckCircle2 } from "lucide-react";
 import heroImage from "@/assets/hero-image.jpg";
+import logo from "@/assets/logo.jpg";
 
 // Hero Section
 function HeroSection() {
@@ -22,8 +23,9 @@ function HeroSection() {
             </div>
             
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-foreground leading-tight mb-6 animate-fade-in" style={{ animationDelay: "0.1s" }}>
-              Здоровье детей — <br />
-              <span className="gradient-text">наш приоритет</span>
+              <span className="text-secondary">Baby</span>{" "}
+              <span className="text-primary">City</span> — <br />
+              <span className="gradient-text">забота о детях</span>
             </h1>
             
             <p className="text-lg md:text-xl text-muted-foreground mb-8 max-w-xl mx-auto lg:mx-0 animate-fade-in" style={{ animationDelay: "0.2s" }}>
@@ -65,7 +67,7 @@ function HeroSection() {
             <div className="relative rounded-3xl overflow-hidden shadow-hover">
               <img 
                 src={heroImage} 
-                alt="Врач осматривает ребёнка" 
+                alt="Врач осматривает ребёнка в Baby City" 
                 className="w-full h-auto object-cover"
               />
             </div>
@@ -73,9 +75,7 @@ function HeroSection() {
             {/* Floating card */}
             <div className="absolute -bottom-6 -left-6 bg-card rounded-2xl p-4 shadow-card animate-float hidden md:block">
               <div className="flex items-center gap-3">
-                <div className="w-12 h-12 rounded-xl bg-secondary/20 flex items-center justify-center">
-                  <Clock className="w-6 h-6 text-secondary" />
-                </div>
+                <img src={logo} alt="Baby City" className="w-12 h-12 object-contain" />
                 <div>
                   <div className="font-semibold text-foreground">Работаем ежедневно</div>
                   <div className="text-sm text-muted-foreground">8:00 - 20:00</div>
@@ -108,13 +108,13 @@ function FeaturesSection() {
       icon: Heart,
       title: "Забота о детях",
       description: "Дружелюбная атмосфера и индивидуальный подход",
-      color: "accent",
+      color: "primary",
     },
     {
       icon: Users,
       title: "Комплексный подход",
       description: "Все необходимые обследования в одном месте",
-      color: "primary",
+      color: "secondary",
     },
   ];
 
@@ -123,7 +123,7 @@ function FeaturesSection() {
       <div className="container-custom">
         <div className="text-center mb-12">
           <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
-            Почему выбирают нас?
+            Почему выбирают <span className="text-primary">Baby City</span>?
           </h2>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
             Мы создаём комфортные условия для детей и их родителей
@@ -165,7 +165,7 @@ function ServicesPreview() {
         <div className="flex flex-col lg:flex-row items-center gap-12 lg:gap-16">
           <div className="lg:w-1/2">
             <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-6">
-              Полный спектр <span className="gradient-text">медицинских услуг</span>
+              Полный спектр <span className="text-primary">медицинских услуг</span>
             </h2>
             <p className="text-lg text-muted-foreground mb-8">
               Мы предлагаем комплексное медицинское обслуживание для детей всех возрастов — 
@@ -207,8 +207,8 @@ function ServicesPreview() {
                   <div className="text-secondary-foreground/80">Довольных родителей</div>
                 </div>
                 <div className="glass-card p-6 hover-lift">
-                  <div className="text-3xl font-bold text-secondary mb-2">30+</div>
-                  <div className="text-muted-foreground">видов анализов</div>
+                  <div className="text-3xl font-bold text-secondary mb-2">4</div>
+                  <div className="text-muted-foreground">филиала в Москве</div>
                 </div>
               </div>
             </div>

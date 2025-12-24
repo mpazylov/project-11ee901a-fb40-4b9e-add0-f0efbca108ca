@@ -1,7 +1,8 @@
 import { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { Button } from "@/components/ui/button";
-import { Menu, X, Phone, Heart } from "lucide-react";
+import { Menu, X, Phone } from "lucide-react";
+import logo from "@/assets/logo.jpg";
 
 const navigation = [
   { name: "Главная", href: "/" },
@@ -9,6 +10,7 @@ const navigation = [
   { name: "Врачи", href: "/doctors" },
   { name: "Услуги", href: "/services" },
   { name: "Отделения", href: "/departments" },
+  { name: "Филиалы", href: "/branches" },
   { name: "Отзывы", href: "/reviews" },
   { name: "Контакты", href: "/contacts" },
 ];
@@ -38,12 +40,17 @@ export function Header() {
         <div className="flex items-center justify-between h-16 md:h-20">
           {/* Logo */}
           <Link to="/" className="flex items-center gap-3 group">
-            <div className="w-10 h-10 md:w-12 md:h-12 rounded-2xl bg-gradient-to-br from-primary to-secondary flex items-center justify-center shadow-soft group-hover:shadow-hover transition-all duration-300">
-              <Heart className="w-5 h-5 md:w-6 md:h-6 text-primary-foreground" />
-            </div>
+            <img 
+              src={logo} 
+              alt="Baby City Hospital" 
+              className="w-12 h-12 md:w-14 md:h-14 object-contain"
+            />
             <div className="hidden sm:block">
-              <h1 className="text-lg md:text-xl font-bold text-foreground">Детский Доктор</h1>
-              <p className="text-xs text-muted-foreground">Медицинский центр</p>
+              <h1 className="text-lg md:text-xl font-bold">
+                <span className="text-secondary">Baby</span>{" "}
+                <span className="text-primary">City</span>
+              </h1>
+              <p className="text-xs text-muted-foreground">Детская больница</p>
             </div>
           </Link>
 
@@ -53,7 +60,7 @@ export function Header() {
               <Link
                 key={item.name}
                 to={item.href}
-                className={`px-4 py-2 rounded-xl text-sm font-medium transition-all duration-300 ${
+                className={`px-3 py-2 rounded-xl text-sm font-medium transition-all duration-300 ${
                   location.pathname === item.href
                     ? "bg-primary/10 text-primary"
                     : "text-muted-foreground hover:text-foreground hover:bg-muted"
