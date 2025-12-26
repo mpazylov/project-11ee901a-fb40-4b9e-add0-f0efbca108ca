@@ -2,22 +2,25 @@ import { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Menu, X, Phone } from "lucide-react";
+import { useLanguage } from "@/contexts/LanguageContext";
+import LanguageSwitcher from "@/components/LanguageSwitcher";
 import logo from "@/assets/logo.jpg";
-
-const navigation = [
-  { name: "Главная", href: "/" },
-  { name: "О клинике", href: "/about" },
-  { name: "Врачи", href: "/doctors" },
-  { name: "Услуги", href: "/services" },
-  { name: "Отделения", href: "/departments" },
-  { name: "Филиалы", href: "/branches" },
-  { name: "Отзывы", href: "/reviews" },
-  { name: "Контакты", href: "/contacts" },
-];
 
 export function Header() {
   const [isOpen, setIsOpen] = useState(false);
   const location = useLocation();
+  const { t } = useLanguage();
+
+  const navigation = [
+    { name: t('nav.home'), href: "/" },
+    { name: t('nav.about'), href: "/about" },
+    { name: t('nav.doctors'), href: "/doctors" },
+    { name: t('nav.services'), href: "/services" },
+    { name: t('nav.departments'), href: "/departments" },
+    { name: t('nav.branches'), href: "/branches" },
+    { name: t('nav.reviews'), href: "/reviews" },
+    { name: t('nav.contacts'), href: "/contacts" },
+  ];
 
   return (
     <header className="fixed top-0 left-0 right-0 z-50 bg-card/95 backdrop-blur-md border-b border-border/50">
@@ -25,15 +28,18 @@ export function Header() {
         {/* Top bar */}
         <div className="hidden md:flex items-center justify-between py-2 border-b border-border/30 text-sm">
           <div className="flex items-center gap-6 text-muted-foreground">
-            <span>Пн-Пт: 8:00 - 20:00 | Сб-Вс: 9:00 - 18:00</span>
+            <span>{t('footer.workdays')} | {t('footer.weekends')}</span>
           </div>
-          <a 
-            href="tel:+74951234567" 
-            className="flex items-center gap-2 text-primary font-semibold hover:text-primary/80 transition-colors"
-          >
-            <Phone className="w-4 h-4" />
-            +7 (495) 123-45-67
-          </a>
+          <div className="flex items-center gap-4">
+            <LanguageSwitcher />
+            <a 
+              href="tel:+998901234567" 
+              className="flex items-center gap-2 text-primary font-semibold hover:text-primary/80 transition-colors"
+            >
+              <Phone className="w-4 h-4" />
+              +998 90 123 45 67
+            </a>
+          </div>
         </div>
 
         {/* Main header */}
@@ -50,7 +56,7 @@ export function Header() {
                 <span className="text-secondary">Baby</span>{" "}
                 <span className="text-primary">City</span>
               </h1>
-              <p className="text-xs text-muted-foreground">Детская больница</p>
+              <p className="text-xs text-muted-foreground">{t('hero.subtitle')}</p>
             </div>
           </Link>
 
@@ -58,7 +64,7 @@ export function Header() {
           <nav className="hidden lg:flex items-center gap-1">
             {navigation.map((item) => (
               <Link
-                key={item.name}
+                key={item.href}
                 to={item.href}
                 className={`px-3 py-2 rounded-xl text-sm font-medium transition-all duration-300 ${
                   location.pathname === item.href
@@ -73,9 +79,12 @@ export function Header() {
 
           {/* CTA Button */}
           <div className="flex items-center gap-3">
+            <div className="md:hidden">
+              <LanguageSwitcher />
+            </div>
             <Link to="/appointment" className="hidden sm:block">
               <Button variant="hero" size="default">
-                Записаться
+                {t('nav.appointment')}
               </Button>
             </Link>
 
@@ -96,7 +105,7 @@ export function Header() {
           <nav className="container-custom py-4 flex flex-col gap-1">
             {navigation.map((item) => (
               <Link
-                key={item.name}
+                key={item.href}
                 to={item.href}
                 onClick={() => setIsOpen(false)}
                 className={`px-4 py-3 rounded-xl text-base font-medium transition-all duration-300 ${
@@ -114,7 +123,7 @@ export function Header() {
               className="mt-4"
             >
               <Button variant="hero" className="w-full">
-                Записаться на приём
+                {t('nav.appointment')}
               </Button>
             </Link>
           </nav>
